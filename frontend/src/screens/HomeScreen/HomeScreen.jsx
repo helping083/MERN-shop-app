@@ -1,13 +1,20 @@
 import React from 'react';
 import { Row, Col } from 'react-bootstrap';
-import PropTypes from 'prop-types'
+import PropTypes from 'prop-types';
+import Product from '../../components/Product'
 import products from '../../products';
 
 const HomeScreen = props => {
   return (
     <>
       <h1>products works</h1>
-      <Row></Row>
+      <Row>
+        {products.map((product, index) => (
+          <Col sm={6} md={6} lg={4} xl={3} key={index}>
+            <Product product={product}/>
+          </Col>
+        ))}
+      </Row>
     </>
   )
 }
