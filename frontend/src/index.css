@@ -14,3 +14,9 @@ h3 {
 .rating span {
   margin: 0.1rem;
 }
+
+/* @media only screen and (min-width: 992px) {
+  #app-container {
+    max-width: 1140px;
+  }
+} */

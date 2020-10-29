@@ -7,11 +7,11 @@ import Rating from '../Rating';
 const Product = ({product}) => {
   const {_id, image, name, rating, numReviews, price} = product;
   return (
-    <Card className = 'my-3 py-3 rounded'>
+    <Card className='my-3 py-3 rounded'>
       <Link to={`/product/${_id}`}>
         <Card.Img src={image} variant='top'/>
       </Link>
-      <Card.Body>
+      <Card.Body className='d-flex flex-column justify-content-between'>
         <Link to={`/product/${_id}`}>
           <Card.Title as='div'>
             <strong>{name}</strong>

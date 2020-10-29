@@ -10,7 +10,7 @@ const HomeScreen = props => {
       <h1>products works</h1>
       <Row>
         {products.map((product, index) => (
-          <Col sm={6} md={6} lg={4} xl={3} key={index}>
+          <Col sm={6} md={6} xl={3} key={index} className='d-flex align-items-stretch'>
             <Product product={product}/>
           </Col>
         ))}
