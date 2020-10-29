@@ -1,6 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import { Container, Row, Col } from 'react-bootstrap';
+import React from "react"
+import { Container, Row, Col } from "react-bootstrap"
 
 const Footer = () => (
   <footer>
@@ -10,10 +9,6 @@ const Footer = () => (
       </Row>
     </Container>
   </footer>
-);
+)
 
-Footer.propTypes = {
-
-};
-
-export default Footer;
+export default Footer
