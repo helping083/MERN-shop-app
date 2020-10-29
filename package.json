@@ -1,0 +1,32 @@
+{
+  "name": "mern-shop-app",
+  "version": "1.0.0",
+  "description": "e-commerce app using react-redux-bootstrap on frontend and express server and mongoDB on backend",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "frontend": "cd frontend && npm start",
+    "backend": "node backend/server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/helping083/MERN-shop-app.git"
+  },
+  "keywords": [
+    "mongoDB",
+    "react",
+    "redux",
+    "javascript",
+    "bootstrap",
+    "express"
+  ],
+  "author": "o.voyt",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/helping083/MERN-shop-app/issues"
+  },
+  "homepage": "https://github.com/helping083/MERN-shop-app#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
