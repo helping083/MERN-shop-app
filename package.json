@@ -6,7 +6,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "frontend": "cd frontend && npm start",
-    "backend": "node backend/server.js"
+    "backend": "node backend/server.js",
+    "lint": "eslint --fix --ext .js."
   },
   "repository": {
     "type": "git",
@@ -28,5 +29,9 @@
   "homepage": "https://github.com/helping083/MERN-shop-app#readme",
   "dependencies": {
     "express": "^4.17.1"
+  },
+  "devDependencies": {
+    "eslint": "^7.12.1",
+    "eslint-config-google": "^0.14.0"
   }
 }
