@@ -1,11 +1,11 @@
-import React from "react"
-import { Card } from "react-bootstrap"
-import { Link } from "react-router-dom"
-import PropTypes from "prop-types"
-import Rating from "../Rating"
+import React from "react";
+import { Card } from "react-bootstrap";
+import { Link } from "react-router-dom";
+import PropTypes from "prop-types";
+import Rating from "../Rating";
 
 const Product = ({ product }) => {
-  const { _id, image, name, rating, numReviews, price } = product
+  const { _id, image, name, rating, numReviews, price } = product;
   return (
     <Card className="my-3 py-3 rounded">
       <Link to={`/product/${_id}`}>
@@ -23,11 +23,11 @@ const Product = ({ product }) => {
         <Card.Text as="h3">${price}</Card.Text>
       </Card.Body>
     </Card>
-  )
-}
+  );
+};
 
 Product.propTypes = {
   product: PropTypes.objectOf(PropTypes.object),
-}
+};
 
-export default Product
+export default Product;

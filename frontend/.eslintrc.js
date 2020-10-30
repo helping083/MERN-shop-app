@@ -19,6 +19,6 @@ module.exports = {
     "no-underscore-dangle": [0, { allow: [] }],
     "no-nested-ternary": "off",
     "react/require-default-props": [0],
-    'react/jsx-one-expression-per-line': 'off',
+    "react/jsx-one-expression-per-line": "off",
   },
-}
+};
