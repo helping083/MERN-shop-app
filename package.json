@@ -7,6 +7,9 @@
     "test": "echo \"Error: no test specified\" && exit 1",
     "frontend": "cd frontend && npm start",
     "backend": "node backend/server.js",
+    "server": "nodemon backend/server",
+    "client": "npm start --prefix frontend",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
     "lint": "eslint --fix --ext .js."
   },
   "repository": {
