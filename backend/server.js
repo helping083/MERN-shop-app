@@ -12,7 +12,8 @@ dbConnect()
       console.log('db connected');
     })
     .catch((err) => {
-      console.log(err, 'error in mongoose connection');
+      console.error(`Error: ${error.message}`.red.underline.bold);
+      process.exit(1);
     });
 
 const app = express();
@@ -32,6 +33,14 @@ app.get('/api/products/:id', (req, res) => {
 
 const PORT = process.env.port || 5000;
 
-app.listen(PORT,
+const server = app.listen(PORT,
     // eslint-disable-next-line max-len
     console.log(`server running in ${process.env.NODE_ENV} on port ${PORT}`.yellow.bold));
+
+process.on('unhandledRejection', (err) => {
+  console.log('err', err.name, err.message);
+  console.log('unhadled rejection');
+  server.close(() => {
+    process.exit(1);
+  });
+});
