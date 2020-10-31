@@ -3,6 +3,7 @@ const dotenv = require('dotenv');
 const productRoutes = require('./routes/productRoutes');
 // eslint-disable-next-line no-unused-vars
 const colors = require('colors');
+const {notFound, errorHandler} = require('./middlewares/errorMiddleware');
 const dbConnect = require('./config/db');
 
 dotenv.config();
@@ -23,6 +24,9 @@ app.get('/', (req, res) => {
 });
 
 app.use('/api/products', productRoutes);
+
+app.use(notFound);
+app.use(errorHandler);
 
 const PORT = process.env.port || 5000;
 
