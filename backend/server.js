@@ -1,9 +1,10 @@
 const express = require('express');
 const products = require('./data/products');
 const dotenv = require('dotenv');
+const dbConnect = require('./config/db');
 
 dotenv.config();
-
+dbConnect();
 const app = express();
 
 app.get('/', (req, res) => {
