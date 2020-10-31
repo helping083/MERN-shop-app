@@ -1,6 +1,6 @@
 const express = require('express');
-const products = require('./data/products');
 const dotenv = require('dotenv');
+const productRoutes = require('./routes/productRoutes');
 // eslint-disable-next-line no-unused-vars
 const colors = require('colors');
 const dbConnect = require('./config/db');
@@ -22,14 +22,7 @@ app.get('/', (req, res) => {
   res.send('app is running');
 });
 
-app.get('/api/products', (req, res) => {
-  res.json(products);
-});
-
-app.get('/api/products/:id', (req, res) => {
-  const product = products.find((p) => p._id === req.params.id);
-  res.json(product);
-});
+app.use('/api/products', productRoutes);
 
 const PORT = process.env.port || 5000;
 
