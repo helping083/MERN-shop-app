@@ -1,6 +1,8 @@
 import React from "react";
 import ReactDOM from "react-dom";
 import { BrowserRouter } from "react-router-dom";
+import { Provider } from "react-redux";
+import Store from "./store";
 import App from "./App";
 import "./index.css";
 import "./assets/bootstrap.min.css";
@@ -8,7 +10,9 @@ import reportWebVitals from "./reportWebVitals";
 
 ReactDOM.render(
   <BrowserRouter>
-    <App />
+    <Provider store={Store}>
+      <App />
+    </Provider>
   </BrowserRouter>,
   document.getElementById("root")
 );
