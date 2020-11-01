@@ -27,7 +27,14 @@ const Product = ({ product }) => {
 };
 
 Product.propTypes = {
-  product: PropTypes.objectOf(PropTypes.object),
+  product: PropTypes.shape({
+    _id: PropTypes.string,
+    image: PropTypes.string,
+    name: PropTypes.string,
+    rating: PropTypes.number,
+    numReviews: PropTypes.number,
+    price: PropTypes.number,
+  }),
 };
 
 export default Product;
