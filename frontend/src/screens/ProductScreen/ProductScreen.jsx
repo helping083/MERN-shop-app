@@ -1,28 +1,30 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect, useCallback } from "react";
 import PropTypes from "prop-types";
-import axios from "axios";
+import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
+import { listProductDetails } from "../../actions/productActions";
+import Loader from "../../components/Loader";
+import Message from "../../components/Message";
 import Rating from "../../components/Rating";
 
 const ProductScreen = ({ match }) => {
-  const [product, setProduct] = useState({});
+  const dispatch = useDispatch();
+  const productDetails = useSelector((state) => state.productDetails);
+  const getProductDetails = useCallback(
+    () => dispatch(listProductDetails(match.params.id)),
+    [dispatch]
+  );
+  const { loading, error, product } = productDetails;
 
   useEffect(() => {
-    const fetchProduct = async () => {
-      const { data } = await axios.get(`/api/products/${match.params.id}`);
+    getProductDetails();
+    // todo: clear product details reducer on unmount;
+    return () => console.log("Component will unmount");
+  }, [getProductDetails, match]);
 
-      setProduct(data);
-    };
-
-    fetchProduct();
-  }, [match]);
-
-  return (
+  const renderProductPageContent = () => (
     <>
-      <Link className="btn btn-light my-3" to="/">
-        go back
-      </Link>
       <Row>
         <Col md={6}>
           <Image src={product.image} alt={product.name} fluid />
@@ -33,6 +35,7 @@ const ProductScreen = ({ match }) => {
               <h3>{product.name}</h3>
             </ListGroup.Item>
             <ListGroup.Item>
+              {console.log(product)}
               <Rating
                 value={product.rating}
                 text={`${product.numReviews} reviews`}
@@ -74,10 +77,29 @@ const ProductScreen = ({ match }) => {
       </Row>
     </>
   );
+
+  return (
+    <>
+      <Link className="btn btn-light my-3" to="/">
+        go back
+      </Link>
+      {loading ? (
+        <Loader />
+      ) : error ? (
+        <Message variant="danger">{error}</Message>
+      ) : (
+        renderProductPageContent()
+      )}
+    </>
+  );
 };
 
 ProductScreen.propTypes = {
-  match: PropTypes.objectOf(PropTypes.object),
+  match: PropTypes.shape({
+    params: PropTypes.shape({
+      id: PropTypes.string,
+    }),
+  }),
 };
 
 export default ProductScreen;
