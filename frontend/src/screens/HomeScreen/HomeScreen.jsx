@@ -1,23 +1,20 @@
-import React, { useState, useEffect } from "react";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Row, Col } from "react-bootstrap";
-import axios from "axios";
+import { listProducts } from "../../actions/productActions";
 import Product from "../../components/Product";
 
 const HomeScreen = () => {
-  const [products, setProducts] = useState([]);
+  const dispatch = useDispatch();
+  const productList = useSelector((state) => state.productList);
+  const { loading, error, products } = productList;
 
   useEffect(() => {
-    const fetchProducts = async () => {
-      const { data } = await axios.get("api/products");
+    dispatch(listProducts());
+  }, [dispatch]);
 
-      setProducts(data);
-    };
-
-    fetchProducts();
-  }, []);
-  return (
+  const renderPageContent = () => (
     <>
-      <h1>products works</h1>
       <Row>
         {products.map((product) => (
           <Col
@@ -31,6 +28,19 @@ const HomeScreen = () => {
           </Col>
         ))}
       </Row>
+    </>
+  );
+
+  return (
+    <>
+      <h1>products works</h1>
+      {loading ? (
+        <h1>spinner...</h1>
+      ) : error ? (
+        <h3>{error}</h3>
+      ) : (
+        renderPageContent()
+      )}
     </>
   );
 };

@@ -20,5 +20,6 @@ module.exports = {
     "no-nested-ternary": "off",
     "react/require-default-props": [0],
     "react/jsx-one-expression-per-line": "off",
+    "import/prefer-default-export": "off",
   },
 };
