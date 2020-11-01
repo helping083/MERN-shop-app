@@ -3,7 +3,10 @@ import PropTypes from "prop-types";
 import { useDispatch, useSelector } from "react-redux";
 import { Link } from "react-router-dom";
 import { Row, Col, Image, ListGroup, Card, Button } from "react-bootstrap";
-import { listProductDetails } from "../../actions/productActions";
+import {
+  listProductDetails,
+  cleanProductDetails,
+} from "../../actions/productActions";
 import Loader from "../../components/Loader";
 import Message from "../../components/Message";
 import Rating from "../../components/Rating";
@@ -19,8 +22,10 @@ const ProductScreen = ({ match }) => {
 
   useEffect(() => {
     getProductDetails();
-    // todo: clear product details reducer on unmount;
-    return () => console.log("Component will unmount");
+
+    return () => {
+      dispatch(cleanProductDetails());
+    };
   }, [getProductDetails, match]);
 
   const renderProductPageContent = () => (

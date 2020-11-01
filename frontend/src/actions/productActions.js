@@ -32,3 +32,7 @@ export const listProductDetails = (id) => async (dispatch) => {
     });
   }
 };
+
+export const cleanProductDetails = () => ({
+  type: ProductActions.PRODUCT_DETAILS_CLEAN,
+});

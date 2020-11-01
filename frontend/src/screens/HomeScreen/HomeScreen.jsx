@@ -18,6 +18,7 @@ const HomeScreen = () => {
   const renderPageContent = () => (
     <>
       <Row>
+        {console.log("render")}
         {products.map((product) => (
           <Col
             sm={6}

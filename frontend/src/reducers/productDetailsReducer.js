@@ -2,6 +2,7 @@ import {
   PRODUCT_DETAILS_REQUEST,
   PRODUCT_DETAILS_SUCCESS,
   PRODUCT_DETAILS_FAIL,
+  PRODUCT_DETAILS_CLEAN,
 } from "../constants/productConstants";
 
 const productDetailsReducer = (state = { product: { reviews: [] } }, action) => {
@@ -20,6 +21,11 @@ const productDetailsReducer = (state = { product: { reviews: [] } }, action) => 
       return {
         loading: false,
         error: action.payload,
+      };
+    case PRODUCT_DETAILS_CLEAN:
+      return {
+        ...state,
+        product: {},
       };
     default:
       return state;
