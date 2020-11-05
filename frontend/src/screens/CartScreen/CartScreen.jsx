@@ -22,8 +22,16 @@ const CartScreen = ({ match, location, history }) => {
     }
   }, [dispatch, productId, qty]);
 
-  const removeFromCartHandler = () => {
+  const handleAddToCart = (e, item) => {
+    dispatch(addToCart(item.product, Number(e.target.value)));
+  };
 
+  const removeFromCartHandler = (id) => {
+    console.log(id);
+  };
+
+  const checkoutHandler = () => {
+    history.push("/login?redirect=shipping");
   };
 
   const renderCartScreenItems = () => (
@@ -41,10 +49,8 @@ const CartScreen = ({ match, location, history }) => {
             <Col md={2}>
               <Form.Control
                 as="select"
-                value={qty}
-                onChange={(e) =>
-                  dispatch(addToCart(item.product, Number(e.target.value)))
-                }
+                value={item.qty}
+                onChange={(e) => handleAddToCart(e, item)}
               >
                 {[...Array(item.countInStock).keys()].map((x) => (
                   <option key={x + 1} value={x + 1}>
@@ -52,6 +58,15 @@ const CartScreen = ({ match, location, history }) => {
                   </option>
                 ))}
               </Form.Control>
+            </Col>
+            <Col md={2}>
+              <Button
+                type="button"
+                variant="light"
+                onClick={() => removeFromCartHandler(item.product)}
+              >
+                <i className="fas fa-trash" />
+              </Button>
             </Col>
           </Row>
         </ListGroup.Item>
@@ -72,10 +87,31 @@ const CartScreen = ({ match, location, history }) => {
           renderCartScreenItems()
         )}
       </Col>
-      <Col md={2}>
-        <Button type="button"></Button>
+      <Col md={4}>
+        <Card>
+          <ListGroup variant="flush">
+            <ListGroup.Item>
+              <h2>
+                Subtotal ({cartItems.reduce((acc, item) => acc + item.qty, 0)}) items
+              </h2>
+              $
+              {cartItems
+                .reduce((acc, item) => acc + item.qty * item.price, 0)
+                .toFixed(2)}
+            </ListGroup.Item>
+            <ListGroup.Item>
+              <Button
+                type="button"
+                className="btn-block"
+                disabled={cartItems.length === 0}
+                onClick={checkoutHandler}
+              >
+                Proceed to checkout
+              </Button>
+            </ListGroup.Item>
+          </ListGroup>
+        </Card>
       </Col>
-      <Col md={2}></Col>
     </Row>
   );
 };
@@ -91,7 +127,9 @@ CartScreen.propTypes = {
     search: PropTypes.string,
   }),
 
-  history: PropTypes.shape({}),
+  history: PropTypes.shape({
+    push: PropTypes.func.isRequired,
+  }),
 };
 
 export default CartScreen;
