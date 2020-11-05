@@ -5,12 +5,15 @@ import {
   PRODUCT_DETAILS_CLEAN,
 } from "../constants/productConstants";
 
-const productDetailsReducer = (state = { product: { reviews: [] } }, action) => {
+const productDetailsReducer = (
+  state = { product: { reviews: [], loading: false } },
+  action
+) => {
   switch (action.type) {
     case PRODUCT_DETAILS_REQUEST:
       return {
-        loading: true,
         ...state,
+        loading: true,
       };
     case PRODUCT_DETAILS_SUCCESS:
       return {
