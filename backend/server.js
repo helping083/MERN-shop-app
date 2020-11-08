@@ -1,6 +1,7 @@
 const express = require('express');
 const dotenv = require('dotenv');
 const productRoutes = require('./routes/productRoutes');
+const usersRoutes = require('./routes/userRoutes');
 // eslint-disable-next-line no-unused-vars
 const colors = require('colors');
 const {notFound, errorHandler} = require('./middlewares/errorMiddleware');
@@ -19,11 +20,14 @@ dbConnect()
 
 const app = express();
 
+app.use(express.json());
+
 app.get('/', (req, res) => {
   res.send('app is running');
 });
 
 app.use('/api/products', productRoutes);
+app.use('/api/users', usersRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
