@@ -11,7 +11,7 @@ const reducer = combineReducers({
   productList: productReducer,
   productDetails: productDetailsReducer,
   cart: cartReducer,
-  user: userLoginReducer,
+  userLogin: userLoginReducer,
 });
 const localStoragePersistor = new LocalStoragePersistor();
 

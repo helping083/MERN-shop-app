@@ -14,7 +14,7 @@ exports.protect = asyncHandler(async (req, res, next) => {
       req.user = await User.findById(decoded.id).select('-password');
       next();
     } catch (error) {
-      console.error(error);
+      console.error('auth error', error.message);
       res.status(401);
       throw new Error('Not auth, token failed');
     }
