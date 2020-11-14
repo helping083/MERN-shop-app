@@ -23,4 +23,25 @@ const userLoginReducer = (state = {}, action) => {
   }
 };
 
-export { userLoginReducer };
+const userRegisterReducer = (state = {}, action) => {
+  switch (action.type) {
+    case UserActions.USER_REGISTER_REQUEST:
+      return {
+        loading: true,
+      };
+    case UserActions.USER_REGISTER_SUCCESS:
+      return {
+        loading: false,
+        userInfo: action.payload,
+      };
+    case UserActions.USER_REGISTER_FAIL:
+      return {
+        loading: false,
+        error: action.payload,
+      };
+    default:
+      return state;
+  }
+};
+
+export { userLoginReducer, userRegisterReducer };

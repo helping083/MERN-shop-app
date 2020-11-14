@@ -4,7 +4,7 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import productReducer from "./reducers/productReducer";
 import productDetailsReducer from "./reducers/productDetailsReducer";
 import cartReducer from "./reducers/cartReducer";
-import { userLoginReducer } from "./reducers/userReducers";
+import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
 import LocalStoragePersistor from "./shared/classes/LocalStoragePersistor";
 
 const reducer = combineReducers({
@@ -12,6 +12,7 @@ const reducer = combineReducers({
   productDetails: productDetailsReducer,
   cart: cartReducer,
   userLogin: userLoginReducer,
+  userRegister: userRegisterReducer,
 });
 const localStoragePersistor = new LocalStoragePersistor();
 
