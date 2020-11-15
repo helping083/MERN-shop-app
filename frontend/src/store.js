@@ -4,7 +4,12 @@ import { composeWithDevTools } from "redux-devtools-extension";
 import productReducer from "./reducers/productReducer";
 import productDetailsReducer from "./reducers/productDetailsReducer";
 import cartReducer from "./reducers/cartReducer";
-import { userLoginReducer, userRegisterReducer } from "./reducers/userReducers";
+import {
+  userLoginReducer,
+  userRegisterReducer,
+  userDetailsReducer,
+  userUpdateProfileReducer,
+} from "./reducers/userReducers";
 import LocalStoragePersistor from "./shared/classes/LocalStoragePersistor";
 
 const reducer = combineReducers({
@@ -13,7 +18,10 @@ const reducer = combineReducers({
   cart: cartReducer,
   userLogin: userLoginReducer,
   userRegister: userRegisterReducer,
+  userDetails: userDetailsReducer,
+  userUpdateProfile: userUpdateProfileReducer,
 });
+
 const localStoragePersistor = new LocalStoragePersistor();
 
 const initialState = {

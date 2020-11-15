@@ -10,6 +10,8 @@ class LocalStoragePersistor {
       ? JSON.parse(localStorage.getItem("userInfo"))
       : null;
   };
+
+  setToLocalStorage = () => {};
 }
 
 export default LocalStoragePersistor;
