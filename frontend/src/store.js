@@ -27,6 +27,7 @@ const localStoragePersistor = new LocalStoragePersistor();
 const initialState = {
   cart: {
     cartItems: localStoragePersistor.cartItemsFromStorage(),
+    shippingAddress: localStoragePersistor.shippingAddressFromStorage(),
   },
   userLogin: {
     userInfo: localStoragePersistor.userInfoFromStorage(),

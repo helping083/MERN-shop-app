@@ -11,6 +11,12 @@ class LocalStoragePersistor {
       : null;
   };
 
+  shippingAddressFromStorage = () => {
+    return localStorage.getItem("shippingAddress")
+      ? JSON.parse(localStorage.getItem("shippingAddress"))
+      : {};
+  };
+
   setToLocalStorage = () => {};
 }
 
