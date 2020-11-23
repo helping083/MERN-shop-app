@@ -2,6 +2,7 @@ const express = require('express');
 const dotenv = require('dotenv');
 const productRoutes = require('./routes/productRoutes');
 const usersRoutes = require('./routes/userRoutes');
+const orderRoutes = require('./routes/orderRoutes');
 // eslint-disable-next-line no-unused-vars
 const colors = require('colors');
 const {notFound, errorHandler} = require('./middlewares/errorMiddleware');
@@ -28,6 +29,7 @@ app.get('/', (req, res) => {
 
 app.use('/api/products', productRoutes);
 app.use('/api/users', usersRoutes);
+app.use('/api/orders', orderRoutes);
 
 app.use(notFound);
 app.use(errorHandler);
