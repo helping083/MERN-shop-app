@@ -10,7 +10,7 @@ import {
   userDetailsReducer,
   userUpdateProfileReducer,
 } from "./reducers/userReducers";
-import { orderCreateReducer } from "./reducers/orderReducers";
+import { orderCreateReducer, orderDetailsReducer } from "./reducers/orderReducers";
 import LocalStoragePersistor from "./shared/classes/LocalStoragePersistor";
 
 const reducer = combineReducers({
@@ -22,6 +22,7 @@ const reducer = combineReducers({
   userDetails: userDetailsReducer,
   userUpdateProfile: userUpdateProfileReducer,
   orderCreate: orderCreateReducer,
+  orderDetails: orderDetailsReducer,
 });
 
 const localStoragePersistor = new LocalStoragePersistor();
