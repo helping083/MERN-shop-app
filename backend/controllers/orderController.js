@@ -17,7 +17,7 @@ module.exports.addOrderItems = asyncHandler(async (req, res) => {
 
   if (orderItems && orderItems.length === 0) {
     res.status(400);
-    throw new Error('No order items');
+    throw new Error('No order it ems');
     return;
   } else {
     const order = new Order({
